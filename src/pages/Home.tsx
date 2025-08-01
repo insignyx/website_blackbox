@@ -105,27 +105,27 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
               Transform Your Business with
               <span className="block bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                 AI &amp; Cloud Solutions
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto px-4">
               Leading software development and IT consulting company specializing in AI implementation, 
               cloud migration, and big data solutions for enterprise success.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <Link
                 to="/contact"
-                className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center"
+                className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center min-h-[48px] touch-manipulation"
               >
                 Get Started Today
-                <ArrowRight className="ml-2" size={20} />
+                <ArrowRight className="ml-2" size={18} />
               </Link>
               <Link
                 to="/services"
-                className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-900 transition-all duration-300"
+                className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-blue-900 transition-all duration-300 min-h-[48px] touch-manipulation"
               >
                 Explore Services
               </Link>
@@ -154,15 +154,15 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 px-4">
               Our Core Services
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
               We specialize in cutting-edge technologies that drive digital transformation and business growth.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {services.map((service, index) => {
               const Icon = service.icon
               return (
@@ -171,13 +171,13 @@ const Home = () => {
                   initial={{ opacity: 0, y: 50 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
-                  className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                  className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 mx-4 sm:mx-0"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
-                    <Icon className="text-white" size={32} />
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
+                    <Icon className="text-white" size={28} />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                  <p className="text-gray-600 mb-6">{service.description}</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">{service.title}</h3>
+                  <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">{service.description}</p>
                   <ul className="space-y-2">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center text-gray-700">
@@ -203,30 +203,30 @@ const Home = () => {
       {/* Stats Section */}
       <section ref={statsRef} className="py-20 bg-gradient-to-r from-blue-900 to-cyan-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center px-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={statsInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8 }}
             >
-              <div className="text-5xl font-bold text-white mb-2">{counters.projects}+</div>
-              <div className="text-xl text-cyan-200">Projects Completed</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">{counters.projects}+</div>
+              <div className="text-base sm:text-lg md:text-xl text-cyan-200">Projects Completed</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={statsInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="text-5xl font-bold text-white mb-2">{counters.clients}+</div>
-              <div className="text-xl text-cyan-200">Happy Clients</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">{counters.clients}+</div>
+              <div className="text-base sm:text-lg md:text-xl text-cyan-200">Happy Clients</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={statsInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="text-5xl font-bold text-white mb-2">{counters.years}+</div>
-              <div className="text-xl text-cyan-200">Years of Excellence</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">{counters.years}+</div>
+              <div className="text-base sm:text-lg md:text-xl text-cyan-200">Years of Excellence</div>
             </motion.div>
           </div>
         </div>
@@ -236,36 +236,36 @@ const Home = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 px-4">
               What Our Clients Say
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg sm:text-xl text-gray-600 px-4">
               Don't just take our word for it - hear from our satisfied clients.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 mx-4 sm:mx-0"
               >
                 <div className="flex items-center mb-6">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-16 h-16 rounded-full object-cover mr-4"
+                    className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover mr-3 sm:mr-4 flex-shrink-0"
                   />
                   <div>
-                    <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                    <p className="text-gray-600">{testimonial.role}</p>
-                    <p className="text-blue-600 font-semibold">{testimonial.company}</p>
+                    <h4 className="font-bold text-gray-900 text-sm sm:text-base">{testimonial.name}</h4>
+                    <p className="text-gray-600 text-xs sm:text-sm">{testimonial.role}</p>
+                    <p className="text-blue-600 font-semibold text-xs sm:text-sm">{testimonial.company}</p>
                   </div>
                 </div>
-                <p className="text-gray-700 italic">"{testimonial.content}"</p>
+                <p className="text-gray-700 italic text-sm sm:text-base leading-relaxed">"{testimonial.content}"</p>
               </motion.div>
             ))}
           </div>
@@ -273,10 +273,10 @@ const Home = () => {
           <div className="text-center mt-12">
             <Link
               to="/testimonials"
-              className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200 inline-flex items-center"
+              className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200 inline-flex items-center min-h-[48px] touch-manipulation"
             >
               View All Testimonials
-              <ArrowRight className="ml-2" size={20} />
+              <ArrowRight className="ml-2" size={18} />
             </Link>
           </div>
         </div>
@@ -290,23 +290,23 @@ const Home = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 px-4 leading-tight">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-xl text-blue-100 mb-8">
+            <p className="text-lg sm:text-xl text-blue-100 mb-8 px-4">
               Let's discuss how our AI, cloud, and big data solutions can drive your success.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <Link
                 to="/contact"
-                className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center"
+                className="bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center min-h-[48px] touch-manipulation"
               >
                 Start Your Project
-                <ArrowRight className="ml-2" size={20} />
+                <ArrowRight className="ml-2" size={18} />
               </Link>
               <Link
                 to="/about"
-                className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
+                className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-blue-600 transition-all duration-300 min-h-[48px] touch-manipulation"
               >
                 Learn About Us
               </Link>

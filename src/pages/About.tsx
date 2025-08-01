@@ -112,7 +112,7 @@ const About = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-blue-900 to-cyan-900 overflow-hidden">
+      <section className="relative py-16 sm:py-20 bg-gradient-to-r from-blue-900 to-cyan-900 overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -120,10 +120,10 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 px-4 leading-tight">
               About Insignyx Technologies
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto px-4">
               Pioneering the future of technology with innovative AI, cloud, and big data solutions 
               that transform businesses and drive digital excellence.
             </p>
@@ -180,20 +180,20 @@ const About = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
+              className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg"
             >
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
-                <Target className="text-white" size={32} />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
+                <Target className="text-white" size={24} />
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">Our Mission</h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-4">Our Mission</h3>
+              <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
                 To empower businesses with transformative technology solutions that drive innovation, 
                 efficiency, and growth. We are committed to delivering exceptional AI, cloud, and big data 
                 services that help our clients achieve their strategic objectives and maintain competitive advantage.
@@ -204,13 +204,13 @@ const About = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
+              className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg"
             >
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                <Eye className="text-white" size={32} />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                <Eye className="text-white" size={24} />
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">Our Vision</h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-4">Our Vision</h3>
+              <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
                 To be the global leader in technology consulting, recognized for our expertise in AI, 
                 cloud computing, and big data analytics. We envision a future where every business, 
                 regardless of size, can harness the power of advanced technology to achieve extraordinary results.
@@ -248,10 +248,10 @@ const About = () => {
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   className="text-center p-6 rounded-2xl hover:shadow-lg transition-shadow duration-300"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Icon className="text-white" size={32} />
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Icon className="text-white" size={24} />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
                   <p className="text-gray-600">{value.description}</p>
                 </motion.div>
               )
@@ -277,7 +277,7 @@ const About = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {team.map((member, index) => (
               <motion.div
                 key={index}
@@ -290,12 +290,12 @@ const About = () => {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100"
+                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100"
                   />
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                  <p className="text-blue-600 font-semibold mb-2">{member.role}</p>
-                  <p className="text-sm text-gray-500 mb-3">{member.expertise}</p>
-                  <p className="text-gray-600 text-sm">{member.bio}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
+                  <p className="text-blue-600 font-semibold mb-2 text-sm sm:text-base">{member.role}</p>
+                  <p className="text-xs sm:text-sm text-gray-500 mb-3">{member.expertise}</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">{member.bio}</p>
                 </div>
               </motion.div>
             ))}

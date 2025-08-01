@@ -1,12 +1,80 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
-import { Star, Quote, ChevronLeft, ChevronRight, Play, Award, TrendingUp, Users, Building, ArrowRight } from 'lucide-react'
+import { Star, Quote, ChevronLeft, ChevronRight, Award, TrendingUp, Users, Building, ArrowRight } from 'lucide-react'
 
 const Testimonials = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const clientLogos = [
+    {
+      id: 1,
+      name: 'TechCorp Industries',
+      logo: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop&crop=center',
+      industry: 'Technology'
+    },
+    {
+      id: 2,
+      name: 'Healthcare Solutions Inc',
+      logo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&h=100&fit=crop&crop=center',
+      industry: 'Healthcare'
+    },
+    {
+      id: 3,
+      name: 'Global Retail Group',
+      logo: 'https://images.unsplash.com/photo-1556155092-8707de31f9c4?w=200&h=100&fit=crop&crop=center',
+      industry: 'Retail'
+    },
+    {
+      id: 4,
+      name: 'Manufacturing Corp',
+      logo: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=200&h=100&fit=crop&crop=center',
+      industry: 'Manufacturing'
+    },
+    {
+      id: 5,
+      name: 'Financial Services Ltd',
+      logo: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=200&h=100&fit=crop&crop=center',
+      industry: 'Finance'
+    },
+    {
+      id: 6,
+      name: 'Energy Solutions Co',
+      logo: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=200&h=100&fit=crop&crop=center',
+      industry: 'Energy'
+    }
+  ];
+
+  const successStories = [
+    {
+      id: 1,
+      quote: "Insignyx Technologies delivered beyond our expectations. Their AI implementation increased our efficiency by 40% and transformed how we operate.",
+      author: 'Sarah Johnson',
+      position: 'CEO',
+      company: 'TechCorp Industries',
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face',
+      metrics: ['40% efficiency increase', '25% cost reduction', '60% faster processing']
+    },
+    {
+      id: 2,
+      quote: "The cloud migration was seamless with zero downtime. Our system performance improved by 300% and costs reduced by 50%.",
+      author: 'Michael Chen',
+      position: 'CTO',
+      company: 'Healthcare Solutions Inc',
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face',
+      metrics: ['Zero downtime', '300% performance boost', '50% cost savings']
+    },
+    {
+      id: 3,
+      quote: "Their e-commerce platform upgrade resulted in 150% increase in conversions and $5M additional revenue in the first quarter.",
+      author: 'Emily Rodriguez',
+      position: 'VP Marketing',
+      company: 'Global Retail Group',
+      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face',
+      metrics: ['150% conversion increase', '$5M additional revenue', '80% engagement boost']
+    }
+  ];
 
   const testimonials = [
     {
@@ -120,7 +188,7 @@ const Testimonials = () => {
         '50% faster production cycles',
         '$2M annual cost savings'
       ],
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=modern%20manufacturing%20facility%20AI%20computer%20vision%20quality%20control%20automated%20inspection%20industrial&image_size=landscape_16_9',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=450&fit=crop&crop=center',
       duration: '8 months',
       team: '12 specialists'
     },
@@ -136,7 +204,7 @@ const Testimonials = () => {
         '60% faster diagnosis times',
         '25% reduction in readmission rates'
       ],
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=modern%20healthcare%20data%20analytics%20dashboard%20medical%20technology%20patient%20care%20digital%20health&image_size=landscape_16_9',
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=450&fit=crop&crop=center',
       duration: '10 months',
       team: '15 specialists'
     },
@@ -152,7 +220,7 @@ const Testimonials = () => {
         '80% improvement in customer engagement',
         '$5M additional revenue in first quarter'
       ],
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=modern%20e-commerce%20personalization%20AI%20recommendation%20engine%20online%20shopping%20digital%20commerce&image_size=landscape_16_9',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=450&fit=crop&crop=center',
       duration: '6 months',
       team: '10 specialists'
     }
@@ -192,7 +260,7 @@ const Testimonials = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-blue-900 to-purple-900 overflow-hidden">
+      <section className="relative py-16 sm:py-20 bg-gradient-to-r from-blue-900 to-purple-900 overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -200,10 +268,10 @@ const Testimonials = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 px-4 leading-tight">
               Client Success Stories
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-8">
+            <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-8 px-4">
               Discover how we've helped businesses transform their operations 
               and achieve remarkable results through innovative technology solutions.
             </p>
@@ -232,7 +300,7 @@ const Testimonials = () => {
       </section>
 
       {/* Featured Testimonial Carousel */}
-      <section ref={ref} className="py-20 bg-white">
+      <section ref={ref} className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -240,17 +308,17 @@ const Testimonials = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 px-4">
               What Our Clients Say
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
               Real feedback from real clients who have experienced the 
               transformative power of our solutions.
             </p>
           </motion.div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12 px-4">
             {categories.map((category) => (
               <button
                 key={category}
@@ -258,7 +326,7 @@ const Testimonials = () => {
                   setSelectedCategory(category)
                   setCurrentTestimonial(0)
                 }}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-200 ${
+                className={`px-3 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-200 text-sm sm:text-base ${
                   selectedCategory === category
                     ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -277,12 +345,12 @@ const Testimonials = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-3xl p-8 md:p-12"
+              className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-3xl p-6 sm:p-8 md:p-12"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <div>
                   <Quote className="text-blue-600 mb-6" size={48} />
-                  <blockquote className="text-xl md:text-2xl text-gray-800 mb-8 leading-relaxed">
+                  <blockquote className="text-lg sm:text-xl md:text-2xl text-gray-800 mb-6 sm:mb-8 leading-relaxed">
                     "{filteredTestimonials[currentTestimonial]?.testimonial}"
                   </blockquote>
                   
@@ -294,32 +362,32 @@ const Testimonials = () => {
                     <img
                       src={filteredTestimonials[currentTestimonial]?.image}
                       alt={filteredTestimonials[currentTestimonial]?.name}
-                      className="w-16 h-16 rounded-full object-cover mr-4"
+                      className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover mr-3 sm:mr-4"
                     />
                     <div>
-                      <div className="font-bold text-gray-900 text-lg">
+                      <div className="font-bold text-gray-900 text-base sm:text-lg">
                         {filteredTestimonials[currentTestimonial]?.name}
                       </div>
-                      <div className="text-gray-600">
+                      <div className="text-gray-600 text-sm sm:text-base">
                         {filteredTestimonials[currentTestimonial]?.position}
                       </div>
-                      <div className="text-blue-600 font-medium">
+                      <div className="text-blue-600 font-medium text-sm sm:text-base">
                         {filteredTestimonials[currentTestimonial]?.company}
                       </div>
                     </div>
                   </div>
                 </div>
                 
-                <div className="bg-white rounded-2xl p-8 shadow-lg">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">
                     Project: {filteredTestimonials[currentTestimonial]?.project}
                   </h3>
                   <div className="space-y-3">
-                    <h4 className="font-semibold text-gray-700">Key Results:</h4>
+                    <h4 className="font-semibold text-gray-700 text-sm sm:text-base">Key Results:</h4>
                     {filteredTestimonials[currentTestimonial]?.results.map((result, index) => (
                       <div key={index} className="flex items-center">
                         <div className="w-2 h-2 bg-green-500 rounded-full mr-3" />
-                        <span className="text-gray-600">{result}</span>
+                        <span className="text-gray-600 text-sm sm:text-base">{result}</span>
                       </div>
                     ))}
                   </div>
@@ -358,7 +426,7 @@ const Testimonials = () => {
       </section>
 
       {/* Case Studies */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -366,16 +434,16 @@ const Testimonials = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 px-4">
               Detailed Case Studies
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
               Dive deep into our most impactful projects and see how we 
               deliver measurable results for our clients.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 px-4">
             {caseStudies.map((study, index) => (
               <motion.div
                 key={study.id}
@@ -396,9 +464,9 @@ const Testimonials = () => {
                   </div>
                 </div>
                 
-                <div className="p-8">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">{study.title}</h3>
-                  <p className="text-gray-600 mb-4">{study.client}</p>
+                <div className="p-6 sm:p-8">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">{study.title}</h3>
+                  <p className="text-gray-600 mb-4 text-sm sm:text-base">{study.client}</p>
                   
                   <div className="mb-6">
                     <h4 className="font-semibold text-gray-900 mb-2">Challenge:</h4>
@@ -420,12 +488,12 @@ const Testimonials = () => {
                     </div>
                   </div>
                   
-                  <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-xs sm:text-sm text-gray-500 mb-6 space-y-1 sm:space-y-0">
                     <span>Duration: {study.duration}</span>
                     <span>Team: {study.team}</span>
                   </div>
                   
-                  <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-200 flex items-center justify-center">
+                  <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 sm:py-4 rounded-lg font-medium hover:shadow-lg transition-all duration-200 flex items-center justify-center text-sm sm:text-base min-h-[48px] touch-manipulation">
                     View Full Case Study
                     <ArrowRight className="ml-2" size={16} />
                   </button>
@@ -436,8 +504,8 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Video Testimonials */}
-      <section className="py-20 bg-white">
+      {/* Client Success Stories */}
+      <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -445,71 +513,121 @@ const Testimonials = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Video Testimonials
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 px-4">
+              Client Success Stories
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Hear directly from our clients about their experience 
-              working with Insignyx Technologies.
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+              Read what our clients say about their transformative 
+              experience working with Insignyx Technologies.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((video, index) => (
+          {/* Success Stories Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-16 sm:mb-20 px-4">
+            {successStories.map((story, index) => (
               <motion.div
-                key={video}
+                key={story.id}
                 initial={{ opacity: 0, y: 50 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
-                className="relative bg-gray-900 rounded-2xl overflow-hidden aspect-video cursor-pointer group"
+                className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <img
-                  src={`https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20executive%20video%20testimonial%20corporate%20office%20background%20${index + 1}&image_size=landscape_16_9`}
-                  alt={`Video testimonial ${video}`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-300" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Play className="text-white ml-1" size={24} />
+                <Quote className="text-blue-600 mb-4 sm:mb-6" size={28} />
+                <p className="text-gray-700 text-base sm:text-lg mb-6 leading-relaxed">
+                  {story.quote}
+                </p>
+                
+                <div className="flex items-center mb-6">
+                  <img
+                    src={story.avatar}
+                    alt={story.author}
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover mr-3 sm:mr-4"
+                  />
+                  <div>
+                    <div className="font-semibold text-gray-900 text-sm sm:text-base">{story.author}</div>
+                    <div className="text-xs sm:text-sm text-gray-600">{story.position}</div>
+                    <div className="text-xs sm:text-sm text-blue-600">{story.company}</div>
                   </div>
                 </div>
-                <div className="absolute bottom-4 left-4 text-white">
-                  <div className="font-semibold">Client Testimonial {video}</div>
-                  <div className="text-sm text-gray-200">2:30 minutes</div>
+                
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-gray-900 mb-3">Key Results:</h4>
+                  {story.metrics.map((metric, idx) => (
+                    <div key={idx} className="flex items-center">
+                      <TrendingUp className="text-green-500 mr-2" size={16} />
+                      <span className="text-sm text-gray-600">{metric}</span>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Trusted by Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-center"
+          >
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-8 px-4">
+              Trusted by Industry Leaders
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-8 items-center px-4">
+              {clientLogos.map((client, index) => (
+                <motion.div
+                  key={client.id}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group"
+                >
+                  <div className="bg-white rounded-lg p-4 sm:p-6 shadow-md hover:shadow-lg transition-shadow duration-300 group-hover:scale-105 transform transition-transform">
+                    <img
+                      src={client.logo}
+                      alt={client.name}
+                      className="w-full h-12 sm:h-14 md:h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                    <div className="mt-3 text-center">
+                      <div className="text-xs sm:text-sm font-medium text-gray-900">{client.name}</div>
+                      <div className="text-xs text-gray-500">{client.industry}</div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="py-16 sm:py-20 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 px-4">
               Ready to Be Our Next Success Story?
             </h2>
-            <p className="text-xl text-blue-100 mb-8">
+            <p className="text-lg sm:text-xl text-blue-100 mb-8 px-4">
               Join hundreds of satisfied clients who have transformed their 
               businesses with our innovative solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:shadow-lg transition-all duration-200">
+              <button className="bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:shadow-lg transition-all duration-200 min-h-[48px] touch-manipulation">
                 Start Your Project
               </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-blue-600 transition-all duration-200">
+              <button className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:bg-white hover:text-blue-600 transition-all duration-200 min-h-[48px] touch-manipulation">
                 Schedule Consultation
               </button>
             </div>
           </motion.div>
         </div>
       </section>
+
+
     </div>
   )
 }
