@@ -92,16 +92,20 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail size={16} className="text-blue-400" />
-                <span className="text-gray-300 text-sm sm:text-base">contact@insignyx.com</span>
+                <span className="text-gray-300 text-sm sm:text-base">connect@insignyx.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={16} className="text-blue-400" />
-                <span className="text-gray-300 text-sm sm:text-base">+1 (555) 123-4567</span>
+                <span className="text-gray-300 text-sm sm:text-base">+91 9520531149</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone size={16} className="text-blue-400" />
+                <span className="text-gray-300 text-sm sm:text-base">+1 908-315-2604</span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin size={16} className="text-blue-400 mt-0.5" />
                 <span className="text-gray-300 text-sm sm:text-base">
-                  123 Tech Street, Silicon Valley, CA 94000
+                  Dr. Vikram Sarabhai Road, Genda Cir, Vadiwadi, Vadodara, Gujarat 390007
                 </span>
               </div>
             </div>

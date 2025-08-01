@@ -84,7 +84,7 @@ const Testimonials = () => {
       company: 'TechFlow Solutions',
       category: 'AI Implementation',
       rating: 5,
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20asian%20male%20CTO%20executive%20portrait%20corporate%20headshot%20business%20suit%20confident%20smile&image_size=square',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
       testimonial: 'Insignyx Technologies transformed our business with their AI implementation. The machine learning models they developed increased our operational efficiency by 40% and reduced costs significantly. Their team\'s expertise and dedication are unmatched.',
       project: 'AI-Powered Analytics Platform',
       results: [
@@ -100,7 +100,7 @@ const Testimonials = () => {
       company: 'CloudFirst Inc.',
       category: 'Cloud Migration',
       rating: 5,
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20female%20VP%20engineering%20executive%20portrait%20corporate%20headshot%20business%20attire%20confident&image_size=square',
+      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
       testimonial: 'The cloud migration project with Insignyx was seamless and exceeded our expectations. They migrated our entire infrastructure to AWS with zero downtime and improved our system performance by 300%. Highly recommended!',
       project: 'AWS Cloud Migration',
       results: [
@@ -116,7 +116,7 @@ const Testimonials = () => {
       company: 'Analytics Pro',
       category: 'Big Data Solutions',
       rating: 5,
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20hispanic%20male%20data%20director%20executive%20portrait%20corporate%20headshot%20business%20suit&image_size=square',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
       testimonial: 'Insignyx helped us build a robust big data platform that processes terabytes of data daily. Their solution enabled real-time analytics and gave us insights we never had before. The ROI was evident within the first quarter.',
       project: 'Real-time Big Data Platform',
       results: [
@@ -132,7 +132,7 @@ const Testimonials = () => {
       company: 'StartupX',
       category: 'Software Development',
       rating: 5,
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20female%20CEO%20executive%20portrait%20corporate%20headshot%20business%20blazer%20confident%20leader&image_size=square',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
       testimonial: 'As a startup, we needed a reliable technology partner who could scale with us. Insignyx delivered a world-class application that helped us secure Series A funding. Their agile approach and technical excellence are outstanding.',
       project: 'MVP Development & Scaling',
       results: [
@@ -148,7 +148,7 @@ const Testimonials = () => {
       company: 'Enterprise Corp',
       category: 'Digital Transformation',
       rating: 5,
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20male%20IT%20director%20executive%20portrait%20corporate%20headshot%20business%20suit%20glasses&image_size=square',
+      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face',
       testimonial: 'Insignyx led our digital transformation journey with expertise and professionalism. They modernized our legacy systems and implemented cutting-edge solutions that positioned us ahead of our competitors.',
       project: 'Legacy System Modernization',
       results: [
@@ -164,7 +164,7 @@ const Testimonials = () => {
       company: 'LogiTech Solutions',
       category: 'AI Implementation',
       rating: 5,
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20asian%20female%20head%20operations%20executive%20portrait%20corporate%20headshot%20business%20attire&image_size=square',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face',
       testimonial: 'The AI automation solutions from Insignyx revolutionized our supply chain operations. We now have predictive analytics that help us optimize inventory and reduce waste by 45%. Exceptional work!',
       project: 'AI Supply Chain Optimization',
       results: [

@@ -156,32 +156,38 @@ const Career = () => {
     {
       icon: Heart,
       title: 'Health & Wellness',
-      description: 'Comprehensive health, dental, and vision insurance with wellness programs'
+      description: 'Comprehensive health, dental, and vision insurance with wellness programs',
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop&crop=center'
     },
     {
       icon: Coffee,
       title: 'Work-Life Balance',
-      description: 'Flexible working hours, remote work options, and unlimited PTO'
+      description: 'Flexible working hours, remote work options, and unlimited PTO',
+      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&h=300&fit=crop&crop=center'
     },
     {
       icon: GraduationCap,
       title: 'Learning & Development',
-      description: 'Annual learning budget, conference attendance, and skill development programs'
+      description: 'Annual learning budget, conference attendance, and skill development programs',
+      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop&crop=center'
     },
     {
       icon: DollarSign,
       title: 'Financial Benefits',
-      description: 'Competitive salary, equity options, 401(k) matching, and performance bonuses'
+      description: 'Competitive salary, equity options, 401(k) matching, and performance bonuses',
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop&crop=center'
     },
     {
       icon: Users,
       title: 'Team Culture',
-      description: 'Collaborative environment, team building events, and inclusive culture'
+      description: 'Collaborative environment, team building events, and inclusive culture',
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop&crop=center'
     },
     {
       icon: Zap,
       title: 'Innovation Time',
-      description: '20% time for personal projects and innovation initiatives'
+      description: '20% time for personal projects and innovation initiatives',
+      image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop&crop=center'
     }
   ]
 
@@ -206,6 +212,14 @@ const Career = () => {
     <div className="pt-16">
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-purple-900 to-blue-900 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=1080&fit=crop&crop=center"
+            alt="Modern Office Environment"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-blue-900/90" />
+        </div>
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -446,13 +460,25 @@ const Career = () => {
                   initial={{ opacity: 0, y: 50 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
-                    <Icon className="text-white" size={32} />
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={benefit.image} 
+                      alt={benefit.title}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute bottom-4 left-4">
+                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                        <Icon className="text-white" size={24} />
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{benefit.description}</p>
+                  </div>
                 </motion.div>
               )
             })}
@@ -504,20 +530,30 @@ const Career = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
-                <h3 className="text-2xl font-bold mb-6">Employee Testimonial</h3>
-                <blockquote className="text-lg mb-6">
-                  "Working at Insignyx has been an incredible journey. The company truly 
-                  values innovation and provides the resources and support needed to grow 
-                  both personally and professionally."
-                </blockquote>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
-                    <Users className="text-white" size={24} />
-                  </div>
-                  <div>
-                    <div className="font-semibold">Sarah Johnson</div>
-                    <div className="text-blue-100">Senior AI Engineer</div>
+              <div className="relative rounded-2xl overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop&crop=center"
+                  alt="Team Collaboration"
+                  className="w-full h-80 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 to-purple-900/70" />
+                <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">
+                  <h3 className="text-2xl font-bold mb-4">Employee Testimonial</h3>
+                  <blockquote className="text-lg mb-6 leading-relaxed">
+                    "Working at Insignyx has been an incredible journey. The company truly 
+                    values innovation and provides the resources and support needed to grow 
+                    both personally and professionally."
+                  </blockquote>
+                  <div className="flex items-center">
+                    <img 
+                       src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face"
+                       alt="Sarah Johnson"
+                       className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-white/30"
+                     />
+                    <div>
+                      <div className="font-semibold">Sarah Johnson</div>
+                      <div className="text-blue-100">Senior AI Engineer</div>
+                    </div>
                   </div>
                 </div>
               </div>

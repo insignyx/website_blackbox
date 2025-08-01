@@ -8,7 +8,6 @@ const Home = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [statsRef, statsInView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [counters, setCounters] = useState({ projects: 0, clients: 0, years: 0 })
-
   // Animated counters
   useEffect(() => {
     if (statsInView) {
@@ -65,7 +64,7 @@ const Home = () => {
       company: 'TechCorp Inc.',
       role: 'CTO',
       content: 'Insignyx transformed our data infrastructure completely. Their AI solutions increased our efficiency by 300%.',
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20woman%20headshot%20corporate%20style%20confident%20smile&image_size=square'
+      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face'
     },
     {
       name: 'Michael Chen',
@@ -87,15 +86,29 @@ const Home = () => {
     <div className="overflow-hidden">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">
-        {/* Background Video */}
+        {/* Video Background */}
         <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-gradient-to-r from-blue-900/90 to-cyan-900/90 absolute z-10" />
-          <div className="w-full h-full bg-black/20 absolute z-20" />
-          <img 
-            src="https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=modern%20technology%20office%20space%20with%20servers%20and%20digital%20screens%20futuristic%20blue%20lighting&image_size=landscape_16_9"
-            alt="Technology Background"
+          <video 
+            autoPlay
+            muted
+            loop
+            playsInline
             className="w-full h-full object-cover"
-          />
+          >
+            <source src="https://videos.pexels.com/video-files/3129957/3129957-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+            <source src="https://videos.pexels.com/video-files/2278095/2278095-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+            <source src="https://videos.pexels.com/video-files/6963944/6963944-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+            {/* Fallback image for browsers that don't support video */}
+            <img 
+              src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=1920&h=1080&fit=crop&crop=center"
+              alt="Technology Background"
+              className="w-full h-full object-cover"
+            />
+          </video>
+          
+          {/* Main gradient overlays for text readability */}
+          <div className="w-full h-full bg-gradient-to-r from-blue-900/80 to-cyan-900/80 absolute z-10" />
+          <div className="w-full h-full bg-black/30 absolute z-20" />
         </div>
 
         {/* Hero Content */}

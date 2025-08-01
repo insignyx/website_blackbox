@@ -39,42 +39,42 @@ const About = () => {
       name: 'Alex Thompson',
       role: 'CEO & Founder',
       expertise: 'Strategic Leadership, AI Strategy',
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20CEO%20headshot%20confident%20business%20leader%20suit%20corporate%20style&image_size=square',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
       bio: '15+ years in technology leadership, former VP at Fortune 500 companies.'
     },
     {
       name: 'Sarah Chen',
       role: 'CTO',
       expertise: 'AI/ML, Cloud Architecture',
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20female%20CTO%20headshot%20technology%20leader%20confident%20smile&image_size=square',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&crop=face',
       bio: 'PhD in Computer Science, expert in machine learning and distributed systems.'
     },
     {
       name: 'Michael Rodriguez',
       role: 'Head of Cloud Solutions',
       expertise: 'AWS, Azure, DevOps',
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20male%20cloud%20architect%20headshot%20technology%20expert%20confident&image_size=square',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
       bio: 'AWS Solutions Architect Professional, 12+ years in cloud infrastructure.'
     },
     {
       name: 'Emily Watson',
       role: 'Data Science Director',
       expertise: 'Big Data, Analytics, BI',
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20female%20data%20scientist%20headshot%20analytics%20expert%20confident&image_size=square',
+      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face',
       bio: 'Former data scientist at Google, specializes in large-scale data processing.'
     },
     {
       name: 'David Kim',
       role: 'VP of Engineering',
       expertise: 'Software Development, Team Leadership',
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20male%20VP%20engineering%20headshot%20software%20development%20leader&image_size=square',
+      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face',
       bio: '20+ years in software engineering, expert in scalable system design.'
     },
     {
       name: 'Lisa Park',
       role: 'Head of Client Success',
       expertise: 'Project Management, Client Relations',
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20female%20client%20success%20manager%20headshot%20friendly%20confident&image_size=square',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face',
       bio: 'PMP certified, ensures exceptional client experience and project delivery.'
     }
   ]

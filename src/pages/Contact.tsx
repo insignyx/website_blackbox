@@ -54,22 +54,22 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email Us',
-      details: 'info@insignyx.com',
-      subDetails: 'sales@insignyx.com',
-      action: 'mailto:info@insignyx.com'
+      details: 'connect@insignyx.com',
+      subDetails: 'info@insignyx.com',
+      action: 'mailto:connect@insignyx.com'
     },
     {
       icon: Phone,
       title: 'Call Us',
-      details: '+1 (555) 123-4567',
-      subDetails: '+1 (555) 123-4568',
-      action: 'tel:+15551234567'
+      details: '+91 9520531149 (India)',
+      subDetails: '+1 908-315-2604 (US)',
+      action: 'tel:+919520531149'
     },
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: '123 Tech Street',
-      subDetails: 'Silicon Valley, CA 94000',
+      details: 'Dr. Vikram Sarabhai Road, Genda Cir',
+      subDetails: 'Vadiwadi, Vadodara, Gujarat 390007',
       action: '#'
     },
     {
@@ -83,22 +83,16 @@ const Contact = () => {
 
   const offices = [
     {
-      city: 'San Francisco',
-      address: '123 Tech Street, Silicon Valley, CA 94000',
-      phone: '+1 (555) 123-4567',
-      email: 'sf@insignyx.com'
+      city: 'Vadodara (Headquarters)',
+      address: 'Dr. Vikram Sarabhai Road, Genda Cir, Vadiwadi, Vadodara, Gujarat 390007',
+      phone: '+91 9520531149',
+      email: 'connect@insignyx.com'
     },
     {
-      city: 'New York',
-      address: '456 Innovation Ave, New York, NY 10001',
-      phone: '+1 (555) 987-6543',
-      email: 'ny@insignyx.com'
-    },
-    {
-      city: 'Austin',
-      address: '789 Startup Blvd, Austin, TX 73301',
-      phone: '+1 (555) 456-7890',
-      email: 'austin@insignyx.com'
+      city: 'United States',
+      address: 'Remote Operations Center',
+      phone: '+1 908-315-2604',
+      email: 'connect@insignyx.com'
     }
   ]
 

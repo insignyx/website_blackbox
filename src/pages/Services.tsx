@@ -14,7 +14,7 @@ const Services = () => {
       title: 'AI Implementation & Consultation',
       subtitle: 'Transform your business with intelligent automation',
       description: 'Harness the power of artificial intelligence to automate processes, gain insights, and drive innovation across your organization.',
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=artificial%20intelligence%20neural%20network%20visualization%20futuristic%20blue%20digital%20brain&image_size=landscape_16_9',
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=450&fit=crop&crop=center',
       features: [
         'Machine Learning Model Development',
         'Natural Language Processing',
@@ -42,7 +42,7 @@ const Services = () => {
       title: 'Cloud Migration & Architecture',
       subtitle: 'Seamless transition to scalable cloud infrastructure',
       description: 'Expert cloud migration services for AWS and Azure, ensuring security, scalability, and cost optimization.',
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=cloud%20computing%20infrastructure%20servers%20data%20center%20modern%20technology%20blue%20theme&image_size=landscape_16_9',
+      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=450&fit=crop&crop=center',
       features: [
         'AWS & Azure Migration',
         'Cloud Architecture Design',
@@ -70,7 +70,7 @@ const Services = () => {
       title: 'Big Data & Analytics Solutions',
       subtitle: 'Unlock insights from your data at scale',
       description: 'Comprehensive big data solutions including data warehousing, real-time processing, and business intelligence.',
-      image: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=big%20data%20analytics%20visualization%20charts%20graphs%20data%20processing%20modern%20dashboard&image_size=landscape_16_9',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop&crop=center',
       features: [
         'Data Warehousing',
         'Real-time Data Processing',
@@ -285,8 +285,16 @@ const Services = () => {
       </section>
 
       {/* Process Section */}
-      <section ref={ref} className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section ref={ref} className="py-20 bg-gray-50 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundSize: '60px 60px'
+          }} />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -304,27 +312,73 @@ const Services = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
             {processSteps.map((step, index) => {
               const Icon = step.icon
+              const backgroundImages = [
+                'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&crop=center', // Discovery - Data analysis
+                'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&crop=center', // Strategy - Planning
+                'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop&crop=center', // Implementation - Coding
+                'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=300&fit=crop&crop=center', // Testing - Quality assurance
+                'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop&crop=center'  // Deployment - Launch
+              ]
+              
               return (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 50 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="text-center relative px-4 sm:px-0"
+                  className="text-center relative px-4 sm:px-0 group"
                 >
                   {index < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 transform translate-x-4" />
+                    <div className="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 transform translate-x-4 z-10" />
                   )}
                   
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 relative z-10">
-                    <span className="text-white font-bold text-sm sm:text-lg">{step.step}</span>
+                  {/* Background Image Card */}
+                  <div className="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 mb-4 group-hover:scale-105">
+                    <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                      <img 
+                        src={backgroundImages[index]} 
+                        alt={step.title}
+                        className="w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 to-cyan-50/80" />
+                    </div>
+                    
+                    <div className="relative z-10">
+                      <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <span className="text-white font-bold text-lg">{step.step}</span>
+                      </div>
+                      
+                      <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <Icon className="text-blue-600" size={20} />
+                      </div>
+                      
+                      <h3 className="text-lg font-bold text-gray-900 mb-3">{step.title}</h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                    </div>
                   </div>
-                  
-                  <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
-                  <p className="text-gray-600 text-xs sm:text-sm">{step.description}</p>
                 </motion.div>
               )
             })}
+          </div>
+          
+          {/* Process Flow Visualization */}
+          <div className="mt-16 text-center">
+            <div className="inline-flex items-center space-x-4 bg-white rounded-full px-8 py-4 shadow-lg">
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-blue-600 rounded-full animate-pulse" />
+                <span className="text-sm font-medium text-gray-700">Start</span>
+              </div>
+              <div className="w-16 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500" />
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+                <span className="text-sm font-medium text-gray-700">Process</span>
+              </div>
+              <div className="w-16 h-0.5 bg-gradient-to-r from-cyan-500 to-green-500" />
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+                <span className="text-sm font-medium text-gray-700">Success</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
