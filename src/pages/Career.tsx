@@ -513,7 +513,7 @@ const Career = () => {
                 </blockquote>
                 <div className="flex items-center">
                   <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
-                    <User className="text-white" size={24} />
+                    <Users className="text-white" size={24} />
                   </div>
                   <div>
                     <div className="font-semibold">Sarah Johnson</div>
