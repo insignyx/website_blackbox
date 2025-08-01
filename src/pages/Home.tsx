@@ -85,7 +85,7 @@ const Home = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Video Background */}
         <div className="absolute inset-0 z-0">
           <video 
@@ -105,11 +105,11 @@ const Home = () => {
               className="w-full h-full object-cover"
             />
           </video>
-          
-          {/* Main gradient overlays for text readability */}
-          <div className="w-full h-full bg-gradient-to-r from-blue-900/80 to-cyan-900/80 absolute z-10" />
-          <div className="w-full h-full bg-black/30 absolute z-20" />
         </div>
+        
+        {/* Main gradient overlays for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-cyan-900/80 z-10" />
+        <div className="absolute inset-0 bg-black/30 z-20" />
 
         {/* Hero Content */}
         <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
