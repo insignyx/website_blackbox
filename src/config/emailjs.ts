@@ -8,9 +8,45 @@
 // 6. Replace the values below with your actual EmailJS credentials
 
 export const emailjsConfig = {
-  serviceId: '-service_6cal5pt', // Replace with your EmailJS service ID
+  serviceId: 'service_6cal5pt', // Replace with your EmailJS service ID
   templateId: 'template_h2itsfs', // Replace with your EmailJS template ID
   publicKey: '-AVzcSjIQpjUEha7w', // Replace with your EmailJS public key
+}
+
+// Check if EmailJS is properly configured
+export const isEmailJSConfigured = (): boolean => {
+  const { serviceId, templateId, publicKey } = emailjsConfig
+  
+  // Check if all required fields are present and not placeholder values
+  const isValid = serviceId && 
+                  templateId && 
+                  publicKey &&
+                  serviceId !== 'YOUR_SERVICE_ID' &&
+                  templateId !== 'YOUR_TEMPLATE_ID' &&
+                  publicKey !== 'YOUR_PUBLIC_KEY' &&
+                  !serviceId.startsWith('-') &&
+                  !templateId.startsWith('-') &&
+                  !publicKey.startsWith('-')
+  
+  return Boolean(isValid)
+}
+
+// Get configuration status for debugging
+export const getEmailJSStatus = () => {
+  const { serviceId, templateId, publicKey } = emailjsConfig
+  const isConfigured = isEmailJSConfigured()
+  
+  return {
+    isConfigured,
+    serviceId: serviceId ? (serviceId.length > 10 ? serviceId.substring(0, 10) + '...' : serviceId) : 'Missing',
+    templateId: templateId ? (templateId.length > 10 ? templateId.substring(0, 10) + '...' : templateId) : 'Missing',
+    publicKey: publicKey ? (publicKey.length > 10 ? publicKey.substring(0, 10) + '...' : publicKey) : 'Missing',
+    errors: [
+      !serviceId || serviceId === 'YOUR_SERVICE_ID' || serviceId.startsWith('-') ? 'Invalid service ID' : null,
+      !templateId || templateId === 'YOUR_TEMPLATE_ID' || templateId.startsWith('-') ? 'Invalid template ID' : null,
+      !publicKey || publicKey === 'YOUR_PUBLIC_KEY' || publicKey.startsWith('-') ? 'Invalid public key' : null
+    ].filter(Boolean)
+  }
 }
 
 // Email template variables that will be available in your EmailJS template:

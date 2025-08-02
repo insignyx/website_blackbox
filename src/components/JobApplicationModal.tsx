@@ -5,7 +5,7 @@ import { X, Upload, FileText, User, Mail, Phone, Building, MessageSquare, Send, 
 import { toast } from 'sonner'
 import { uploadResume, saveJobApplication, validateFile } from '../config/supabase'
 import emailjs from '@emailjs/browser'
-import { emailjsConfig } from '../config/emailjs'
+import { emailjsConfig, isEmailJSConfigured, getEmailJSStatus } from '../config/emailjs'
 
 interface JobApplicationModalProps {
   isOpen: boolean
@@ -158,39 +158,47 @@ const JobApplicationModal = ({ isOpen, onClose, jobTitle, jobId, department, loc
       await saveJobApplication(applicationData)
       console.log('✅ Application saved to database successfully')
 
-      // Send email notification via EmailJS
-      console.log('📧 Preparing email notification...')
-      const emailData = {
-        to_email: 'connect@insignyx.com',
-        candidate_name: `${formData.firstName} ${formData.lastName}`,
-        candidate_email: formData.email,
-        candidate_phone: formData.phone,
-        job_title: jobTitle,
-        department,
-        location,
-        cover_letter: formData.coverLetter,
-        linkedin_url: formData.linkedinUrl,
-        portfolio_url: formData.portfolioUrl,
-        expected_salary: formData.expectedSalary,
-        availability_date: formData.availabilityDate,
-        work_arrangement: formData.workArrangement,
-        resume_filename: resumeData.fileName,
-        application_date: new Date().toLocaleDateString()
-      }
-      console.log('📧 Email data:', emailData)
-      console.log('📧 EmailJS config:', { serviceId: emailjsConfig.serviceId, templateId: emailjsConfig.templateId, publicKey: emailjsConfig.publicKey ? 'Set' : 'Not set' })
-
-      try {
-        await emailjs.send(
-          emailjsConfig.serviceId,
-          emailjsConfig.templateId,
-          emailData,
-          emailjsConfig.publicKey
-        )
-        console.log('✅ Email notification sent successfully')
-      } catch (emailError) {
-        console.warn('⚠️ Email notification failed, but application was saved:', emailError)
-        // Don't fail the entire process if email fails
+      // Send email notification via EmailJS (if configured)
+      console.log('📧 Checking EmailJS configuration...')
+      const emailStatus = getEmailJSStatus()
+      console.log('📧 EmailJS status:', emailStatus)
+      
+      if (isEmailJSConfigured()) {
+        console.log('📧 EmailJS is configured, sending notification...')
+        const emailData = {
+          to_email: 'connect@insignyx.com',
+          candidate_name: `${formData.firstName} ${formData.lastName}`,
+          candidate_email: formData.email,
+          candidate_phone: formData.phone,
+          job_title: jobTitle,
+          department,
+          location,
+          cover_letter: formData.coverLetter,
+          linkedin_url: formData.linkedinUrl,
+          portfolio_url: formData.portfolioUrl,
+          expected_salary: formData.expectedSalary,
+          availability_date: formData.availabilityDate,
+          work_arrangement: formData.workArrangement,
+          resume_filename: resumeData.fileName,
+          application_date: new Date().toLocaleDateString()
+        }
+        
+        try {
+          await emailjs.send(
+            emailjsConfig.serviceId,
+            emailjsConfig.templateId,
+            emailData,
+            emailjsConfig.publicKey
+          )
+          console.log('✅ Email notification sent successfully')
+        } catch (emailError) {
+          console.warn('⚠️ Email notification failed, but application was saved:', emailError)
+          // Don't fail the entire process if email fails - application is already saved
+        }
+      } else {
+        console.log('📧 EmailJS not configured, skipping email notification')
+        console.log('📧 Configuration errors:', emailStatus.errors)
+        // Application is still successful even without email notification
       }
 
       console.log('🎉 Application submission completed successfully!')
