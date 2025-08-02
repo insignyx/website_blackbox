@@ -5,22 +5,29 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string
 
 // Validate configuration
+let isConfigured = true
+
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('❌ Supabase environment variables are missing!')
-  console.error('VITE_SUPABASE_URL:', supabaseUrl ? 'Present' : 'Missing')
-  console.error('VITE_SUPABASE_ANON_KEY:', supabaseAnonKey ? 'Present' : 'Missing')
-  throw new Error('Supabase configuration is incomplete. Please check your .env file.')
+  console.warn('⚠️ Supabase environment variables are missing!')
+  console.warn('VITE_SUPABASE_URL:', supabaseUrl ? 'Present' : 'Missing')
+  console.warn('VITE_SUPABASE_ANON_KEY:', supabaseAnonKey ? 'Present' : 'Missing')
+  isConfigured = false
 }
 
 if (supabaseUrl === 'YOUR_SUPABASE_URL' || supabaseAnonKey === 'YOUR_SUPABASE_ANON_KEY') {
-  console.error('❌ Supabase environment variables contain placeholder values!')
-  throw new Error('Please replace placeholder values in your .env file with actual Supabase credentials.')
+  console.warn('⚠️ Supabase environment variables contain placeholder values!')
+  isConfigured = false
 }
 
-// Create Supabase client
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// Create Supabase client with fallback
+export const supabase = isConfigured ? createClient(supabaseUrl, supabaseAnonKey) : null
+export const isSupabaseConfigured = isConfigured
 
-console.log('✅ Supabase client initialized successfully')
+if (isConfigured) {
+  console.log('✅ Supabase client initialized successfully')
+} else {
+  console.warn('⚠️ Supabase client not initialized - using fallback mode')
+}
 
 // Database Configuration
 export const DATABASE_CONFIG = {
@@ -113,6 +120,9 @@ export const validateFile = (file: File): FileValidationResult => {
  * Upload resume file to Supabase Storage
  */
 export const uploadResume = async (file: File, candidateId: string): Promise<ResumeUploadResult> => {
+  if (!supabase || !isSupabaseConfigured) {
+    throw new Error('Supabase is not configured. Please check your configuration in src/config/supabase.ts')
+  }
   
   try {
     // Validate file first
@@ -158,6 +168,9 @@ export const uploadResume = async (file: File, candidateId: string): Promise<Res
  * Save job application to database
  */
 export const saveJobApplication = async (applicationData: JobApplication): Promise<void> => {
+  if (!supabase || !isSupabaseConfigured) {
+    throw new Error('Supabase is not configured. Please check your configuration in src/config/supabase.ts')
+  }
   
   try {
     const { error } = await supabase
@@ -181,7 +194,7 @@ export const getJobApplications = async (filters?: {
   status?: string
   department?: string
 }): Promise<JobApplication[]> => {
-  if (!supabase) {
+  if (!supabase || !isSupabaseConfigured) {
     throw new Error('Supabase is not configured. Please check your configuration in src/config/supabase.ts')
   }
   
