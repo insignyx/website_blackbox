@@ -3,6 +3,8 @@ import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, ArrowRight, Building, User, MessageSquare } from 'lucide-react'
 import { toast } from 'sonner'
+import emailjs from '@emailjs/browser'
+import { emailjsConfig } from '../config/emailjs'
 import SEOHead from '../components/SEOHead'
 
 const Contact = () => {
@@ -54,7 +56,6 @@ const Contact = () => {
     phone: '',
     // Step 2: Project Details
     service: '',
-    budget: '',
     timeline: '',
     // Step 3: Message
     message: '',
@@ -82,11 +83,50 @@ const Contact = () => {
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Simulate form submission
-    toast.success('Thank you! We\'ll get back to you within 24 hours.')
-    console.log('Form submitted:', formData)
+    
+    try {
+      // Check if EmailJS is configured
+      if (emailjsConfig.publicKey === 'YOUR_PUBLIC_KEY') {
+        toast.error('Email service is not configured. Please contact us directly at connect@insignyx.com')
+        return
+      }
+      
+      // Prepare email template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company || 'Not provided',
+        phone: formData.phone || 'Not provided',
+        service: formData.service,
+        timeline: formData.timeline || 'Not specified',
+        message: formData.message,
+        to_email: 'connect@insignyx.com'
+      }
+      
+      // Send email using EmailJS
+      await emailjs.send(emailjsConfig.serviceId, emailjsConfig.templateId, templateParams, emailjsConfig.publicKey)
+      
+      toast.success('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.')
+      
+      // Reset form after successful submission
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        phone: '',
+        service: '',
+        timeline: '',
+        message: '',
+        newsletter: false
+      })
+      setCurrentStep(1)
+      
+    } catch (error) {
+      console.error('Email sending failed:', error)
+      toast.error('Sorry, there was an error sending your message. Please try again or contact us directly at connect@insignyx.com')
+    }
   }
 
   const contactInfo = [
@@ -145,14 +185,7 @@ const Contact = () => {
     'Other'
   ]
 
-  const budgetRanges = [
-    'Under $50K',
-    '$50K - $100K',
-    '$100K - $250K',
-    '$250K - $500K',
-    '$500K+',
-    'Not Sure'
-  ]
+
 
   const timelines = [
     'ASAP',
@@ -264,36 +297,19 @@ const Contact = () => {
                 </select>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Budget Range</label>
-                  <select
-                    name="budget"
-                    value={formData.budget}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  >
-                    <option value="">Select budget range</option>
-                    {budgetRanges.map((budget) => (
-                      <option key={budget} value={budget}>{budget}</option>
-                    ))}
-                  </select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Timeline</label>
-                  <select
-                    name="timeline"
-                    value={formData.timeline}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  >
-                    <option value="">Select timeline</option>
-                    {timelines.map((timeline) => (
-                      <option key={timeline} value={timeline}>{timeline}</option>
-                    ))}
-                  </select>
-                </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Timeline</label>
+                <select
+                  name="timeline"
+                  value={formData.timeline}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                >
+                  <option value="">Select timeline</option>
+                  {timelines.map((timeline) => (
+                    <option key={timeline} value={timeline}>{timeline}</option>
+                  ))}
+                </select>
               </div>
             </div>
           </motion.div>
