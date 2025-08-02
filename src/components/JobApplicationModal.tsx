@@ -96,7 +96,12 @@ const JobApplicationModal = ({ isOpen, onClose, jobTitle, jobId, department, loc
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
+    console.log('🚀 Starting job application submission...')
+    console.log('📋 Form data:', formData)
+    console.log('📄 Uploaded file:', uploadedFile?.name, uploadedFile?.size)
+    
     if (!uploadedFile) {
+      console.error('❌ No resume file uploaded')
       toast.error('Please upload your resume')
       return
     }
@@ -104,11 +109,23 @@ const JobApplicationModal = ({ isOpen, onClose, jobTitle, jobId, department, loc
     setIsSubmitting(true)
 
     try {
+      // Check Supabase client initialization
+      console.log('🔍 Checking Supabase client...')
+      const { supabase } = await import('../config/supabase')
+      if (!supabase) {
+        console.error('❌ Supabase client not initialized')
+        throw new Error('Supabase is not configured. Please check your environment variables.')
+      }
+      console.log('✅ Supabase client is ready')
+      
       // Generate candidate ID
       const candidateId = `candidate_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+      console.log('🆔 Generated candidate ID:', candidateId)
       
       // Upload resume file
+      console.log('📤 Starting resume upload...')
       const resumeData = await uploadResume(uploadedFile, candidateId)
+      console.log('✅ Resume uploaded successfully:', resumeData)
       
       // Prepare application data
       const applicationData = {
@@ -134,11 +151,15 @@ const JobApplicationModal = ({ isOpen, onClose, jobTitle, jobId, department, loc
         application_date: new Date().toISOString(),
         status: 'pending' as const
       }
+      console.log('📊 Application data prepared:', applicationData)
 
       // Save to Supabase
+      console.log('💾 Saving to database...')
       await saveJobApplication(applicationData)
+      console.log('✅ Application saved to database successfully')
 
       // Send email notification via EmailJS
+      console.log('📧 Preparing email notification...')
       const emailData = {
         to_email: 'connect@insignyx.com',
         candidate_name: `${formData.firstName} ${formData.lastName}`,
@@ -156,20 +177,47 @@ const JobApplicationModal = ({ isOpen, onClose, jobTitle, jobId, department, loc
         resume_filename: resumeData.fileName,
         application_date: new Date().toLocaleDateString()
       }
+      console.log('📧 Email data:', emailData)
+      console.log('📧 EmailJS config:', { serviceId: emailjsConfig.serviceId, templateId: emailjsConfig.templateId, publicKey: emailjsConfig.publicKey ? 'Set' : 'Not set' })
 
-      await emailjs.send(
-        emailjsConfig.serviceId,
-        emailjsConfig.templateId,
-        emailData,
-        emailjsConfig.publicKey
-      )
+      try {
+        await emailjs.send(
+          emailjsConfig.serviceId,
+          emailjsConfig.templateId,
+          emailData,
+          emailjsConfig.publicKey
+        )
+        console.log('✅ Email notification sent successfully')
+      } catch (emailError) {
+        console.warn('⚠️ Email notification failed, but application was saved:', emailError)
+        // Don't fail the entire process if email fails
+      }
 
+      console.log('🎉 Application submission completed successfully!')
       toast.success('Application submitted successfully! We\'ll be in touch soon.')
       onClose()
       resetForm()
     } catch (error) {
-      console.error('Application submission error:', error)
-      toast.error('Failed to submit application. Please try again.')
+      console.error('❌ Application submission failed:', error)
+      
+      // Provide more specific error messages
+      let errorMessage = 'Failed to submit application. Please try again.'
+      
+      if (error instanceof Error) {
+        if (error.message.includes('Supabase is not configured')) {
+          errorMessage = 'Configuration error. Please contact support.'
+        } else if (error.message.includes('Upload failed')) {
+          errorMessage = 'Failed to upload resume. Please try again.'
+        } else if (error.message.includes('Database save failed')) {
+          errorMessage = 'Failed to save application. Please try again.'
+        } else if (error.message.includes('File size')) {
+          errorMessage = 'File size too large. Please use a smaller file.'
+        } else if (error.message.includes('file type') || error.message.includes('extension')) {
+          errorMessage = 'Invalid file type. Please upload PDF, DOC, or DOCX files only.'
+        }
+      }
+      
+      toast.error(errorMessage)
     } finally {
       setIsSubmitting(false)
     }
