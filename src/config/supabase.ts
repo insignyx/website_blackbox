@@ -1,44 +1,47 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Supabase Configuration
+// Supabase Configuration with enhanced debugging
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string
 
-// Debug: Log all environment variables
+// Enhanced debugging for environment variables
 console.log('🔍 Environment Variables Debug:')
-console.log('All import.meta.env:', import.meta.env)
-console.log('VITE_SUPABASE_URL raw value:', supabaseUrl)
-console.log('VITE_SUPABASE_ANON_KEY raw value:', supabaseAnonKey)
-console.log('VITE_SUPABASE_URL type:', typeof supabaseUrl)
-console.log('VITE_SUPABASE_ANON_KEY type:', typeof supabaseAnonKey)
-console.log('VITE_SUPABASE_URL length:', supabaseUrl?.length)
-console.log('VITE_SUPABASE_ANON_KEY length:', supabaseAnonKey?.length)
+console.log('- All import.meta.env:', import.meta.env)
+console.log('- VITE_SUPABASE_URL:', supabaseUrl)
+console.log('- VITE_SUPABASE_ANON_KEY:', supabaseAnonKey)
+console.log('- URL type:', typeof supabaseUrl)
+console.log('- Key type:', typeof supabaseAnonKey)
+console.log('- URL length:', supabaseUrl?.length || 0)
+console.log('- Key length:', supabaseAnonKey?.length || 0)
 
-// Validate configuration
+// Validate configuration with enhanced checks
 let isConfigured = true
-const errors: string[] = []
+let configErrors: string[] = []
 
 if (!supabaseUrl || supabaseUrl === 'undefined' || supabaseUrl.trim() === '') {
-  console.error('❌ VITE_SUPABASE_URL is missing or invalid:', supabaseUrl)
-  errors.push('VITE_SUPABASE_URL is missing or invalid')
+  configErrors.push('VITE_SUPABASE_URL is missing or invalid')
   isConfigured = false
 }
 
 if (!supabaseAnonKey || supabaseAnonKey === 'undefined' || supabaseAnonKey.trim() === '') {
-  console.error('❌ VITE_SUPABASE_ANON_KEY is missing or invalid:', supabaseAnonKey)
-  errors.push('VITE_SUPABASE_ANON_KEY is missing or invalid')
+  configErrors.push('VITE_SUPABASE_ANON_KEY is missing or invalid')
   isConfigured = false
 }
 
 if (supabaseUrl === 'YOUR_SUPABASE_URL' || supabaseAnonKey === 'YOUR_SUPABASE_ANON_KEY') {
-  console.error('❌ Supabase environment variables contain placeholder values!')
-  errors.push('Environment variables contain placeholder values')
+  configErrors.push('Environment variables contain placeholder values')
   isConfigured = false
 }
 
-if (errors.length > 0) {
-  console.error('❌ Supabase configuration errors:', errors)
-  alert('Supabase Configuration Error:\n' + errors.join('\n'))
+// Show configuration errors prominently
+if (!isConfigured) {
+  const errorMessage = `Supabase Configuration Error:\n${configErrors.join('\n')}`
+  console.error('❌', errorMessage)
+  
+  // Show alert in browser for immediate visibility
+  if (typeof window !== 'undefined') {
+    alert(errorMessage)
+  }
 }
 
 // Create Supabase client with fallback
@@ -47,6 +50,8 @@ export const isSupabaseConfigured = isConfigured
 
 if (isConfigured) {
   console.log('✅ Supabase client initialized successfully')
+  console.log('- URL:', supabaseUrl.substring(0, 30) + '...')
+  console.log('- Key prefix:', supabaseAnonKey.substring(0, 20) + '...')
 } else {
   console.warn('⚠️ Supabase client not initialized - using fallback mode')
 }
