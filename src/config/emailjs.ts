@@ -25,8 +25,7 @@ export const isEmailJSConfigured = (): boolean => {
                   templateId !== 'YOUR_TEMPLATE_ID' &&
                   publicKey !== 'YOUR_PUBLIC_KEY' &&
                   !serviceId.startsWith('-') &&
-                  !templateId.startsWith('-') &&
-                  !publicKey.startsWith('-')
+                  !templateId.startsWith('-')
   
   return Boolean(isValid)
 }
@@ -44,7 +43,7 @@ export const getEmailJSStatus = () => {
     errors: [
       !serviceId || serviceId === 'YOUR_SERVICE_ID' || serviceId.startsWith('-') ? 'Invalid service ID' : null,
       !templateId || templateId === 'YOUR_TEMPLATE_ID' || templateId.startsWith('-') ? 'Invalid template ID' : null,
-      !publicKey || publicKey === 'YOUR_PUBLIC_KEY' || publicKey.startsWith('-') ? 'Invalid public key' : null
+      !publicKey || publicKey === 'YOUR_PUBLIC_KEY' ? 'Invalid public key' : null
     ].filter(Boolean)
   }
 }
