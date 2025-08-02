@@ -138,8 +138,6 @@ const AIServicesUS = () => {
         ]}
       />
       
-      <Breadcrumb items={breadcrumbs} />
-      
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-blue-900 to-purple-900 overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />

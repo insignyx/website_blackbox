@@ -153,8 +153,6 @@ const BigDataSolutionsDelhi = () => {
         ]}
       />
       
-      <Breadcrumb items={breadcrumbs} />
-      
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-green-900 to-teal-900 overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />

@@ -61,8 +61,6 @@ const AIForFinance: React.FC = () => {
         <section className="relative bg-gradient-to-br from-green-900 via-green-800 to-emerald-900 text-white py-20">
           <div className="absolute inset-0 bg-black/20"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Breadcrumb items={breadcrumbs} className="mb-8 text-green-200" />
-            
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="text-4xl lg:text-6xl font-bold mb-6">

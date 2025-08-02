@@ -146,8 +146,6 @@ const CloudMigrationMumbai = () => {
         ]}
       />
       
-      <Breadcrumb items={breadcrumbs} />
-      
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-indigo-900 to-purple-900 overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />
