@@ -4,16 +4,13 @@ import { ArrowRight, Brain, Cloud, Database, Users, Award, TrendingUp, CheckCirc
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import SEOHead from '../components/SEOHead'
-import Breadcrumb from '../components/Breadcrumb'
 
 const Home = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [statsRef, statsInView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [counters, setCounters] = useState({ projects: 0, clients: 0, years: 0 })
 
-  const breadcrumbs = [
-    { name: 'Home', url: '/' }
-  ]
+
 
   const faqData = [
     {
@@ -176,7 +173,7 @@ const Home = () => {
         keywords="AI implementation India, cloud migration services, big data solutions, AWS consulting India, Azure migration, machine learning consulting, enterprise AI solutions, digital transformation India, cloud architecture, data analytics services"
         canonicalUrl="https://insignyx.com/"
         structuredData={structuredData}
-        breadcrumbs={breadcrumbs}
+
         faqData={faqData}
         hreflang={[
           { lang: 'en-us', url: 'https://insignyx.com/' },
@@ -184,8 +181,7 @@ const Home = () => {
         ]}
       />
       
-      {/* Breadcrumb */}
-      <Breadcrumb items={breadcrumbs} />
+
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
