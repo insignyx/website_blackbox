@@ -4,19 +4,41 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string
 
+// Debug: Log all environment variables
+console.log('🔍 Environment Variables Debug:')
+console.log('All import.meta.env:', import.meta.env)
+console.log('VITE_SUPABASE_URL raw value:', supabaseUrl)
+console.log('VITE_SUPABASE_ANON_KEY raw value:', supabaseAnonKey)
+console.log('VITE_SUPABASE_URL type:', typeof supabaseUrl)
+console.log('VITE_SUPABASE_ANON_KEY type:', typeof supabaseAnonKey)
+console.log('VITE_SUPABASE_URL length:', supabaseUrl?.length)
+console.log('VITE_SUPABASE_ANON_KEY length:', supabaseAnonKey?.length)
+
 // Validate configuration
 let isConfigured = true
+const errors: string[] = []
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('⚠️ Supabase environment variables are missing!')
-  console.warn('VITE_SUPABASE_URL:', supabaseUrl ? 'Present' : 'Missing')
-  console.warn('VITE_SUPABASE_ANON_KEY:', supabaseAnonKey ? 'Present' : 'Missing')
+if (!supabaseUrl || supabaseUrl === 'undefined' || supabaseUrl.trim() === '') {
+  console.error('❌ VITE_SUPABASE_URL is missing or invalid:', supabaseUrl)
+  errors.push('VITE_SUPABASE_URL is missing or invalid')
+  isConfigured = false
+}
+
+if (!supabaseAnonKey || supabaseAnonKey === 'undefined' || supabaseAnonKey.trim() === '') {
+  console.error('❌ VITE_SUPABASE_ANON_KEY is missing or invalid:', supabaseAnonKey)
+  errors.push('VITE_SUPABASE_ANON_KEY is missing or invalid')
   isConfigured = false
 }
 
 if (supabaseUrl === 'YOUR_SUPABASE_URL' || supabaseAnonKey === 'YOUR_SUPABASE_ANON_KEY') {
-  console.warn('⚠️ Supabase environment variables contain placeholder values!')
+  console.error('❌ Supabase environment variables contain placeholder values!')
+  errors.push('Environment variables contain placeholder values')
   isConfigured = false
+}
+
+if (errors.length > 0) {
+  console.error('❌ Supabase configuration errors:', errors)
+  alert('Supabase Configuration Error:\n' + errors.join('\n'))
 }
 
 // Create Supabase client with fallback
