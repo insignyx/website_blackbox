@@ -26,6 +26,7 @@ export const isEmailJSConfigured = (): boolean => {
                   publicKey !== 'YOUR_PUBLIC_KEY' &&
                   !serviceId.startsWith('-') &&
                   !templateId.startsWith('-')
+                  // Note: publicKey can legitimately start with '-' in EmailJS
   
   return Boolean(isValid)
 }
