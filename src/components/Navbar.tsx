@@ -8,6 +8,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const location = useLocation()
+  const isHomePage = location.pathname === '/'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,7 +61,7 @@ const Navbar = () => {
                 className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   location.pathname === link.path
                     ? 'text-blue-600'
-                    : isScrolled
+                    : isScrolled || !isHomePage
                     ? 'text-gray-700 hover:text-blue-600'
                     : 'text-white hover:text-cyan-300'
                 }`}
@@ -90,7 +91,7 @@ const Navbar = () => {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`md:hidden p-2 rounded-md ${
-              isScrolled ? 'text-gray-700' : 'text-white'
+              isScrolled || !isHomePage ? 'text-gray-700' : 'text-white'
             }`}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
