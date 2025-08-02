@@ -3,11 +3,97 @@ import { useInView } from 'react-intersection-observer'
 import { ArrowRight, Brain, Cloud, Database, Users, Award, TrendingUp, CheckCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import SEOHead from '../components/SEOHead'
+import Breadcrumb from '../components/Breadcrumb'
 
 const Home = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [statsRef, statsInView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [counters, setCounters] = useState({ projects: 0, clients: 0, years: 0 })
+
+  const breadcrumbs = [
+    { name: 'Home', url: '/' }
+  ]
+
+  const faqData = [
+    {
+      question: 'What AI implementation services do you offer?',
+      answer: 'We provide comprehensive AI solutions including machine learning model development, natural language processing, computer vision, predictive analytics, and intelligent automation for enterprises.'
+    },
+    {
+      question: 'How long does cloud migration take?',
+      answer: 'Cloud migration timelines vary based on complexity, but typically range from 2-6 months for enterprise applications. We provide detailed project timelines during our initial consultation.'
+    },
+    {
+      question: 'Do you support both AWS and Azure platforms?',
+      answer: 'Yes, we are certified partners with both AWS and Microsoft Azure, offering migration, optimization, and ongoing support for both cloud platforms.'
+    },
+    {
+      question: 'What industries do you serve?',
+      answer: 'We serve various industries including healthcare, finance, e-commerce, retail, manufacturing, and technology companies, providing tailored AI and cloud solutions.'
+    },
+    {
+      question: 'Do you provide ongoing support after project completion?',
+      answer: 'Yes, we offer comprehensive post-deployment support including monitoring, maintenance, optimization, and 24/7 technical assistance to ensure optimal performance.'
+    }
+  ]
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Insignyx Technologies",
+    "url": "https://insignyx.com",
+    "logo": "https://insignyx.com/logo.png",
+    "description": "Leading AI implementation, cloud migration, and big data solutions company specializing in enterprise digital transformation.",
+    "foundingDate": "2016",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN",
+      "addressRegion": "Delhi",
+      "addressLocality": "New Delhi"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-11-4567-8900",
+      "contactType": "customer service",
+      "email": "info@insignyx.com"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/insignyx-technologies",
+      "https://twitter.com/InsignyxTech",
+      "https://www.facebook.com/InsignyxTechnologies"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Technology Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI Implementation Services",
+            "description": "Enterprise AI solutions including machine learning, NLP, and computer vision"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Cloud Migration Services",
+            "description": "AWS and Azure cloud migration with optimization and security"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Big Data Solutions",
+            "description": "Data analytics, warehousing, and business intelligence solutions"
+          }
+        }
+      ]
+    }
+  }
   // Animated counters
   useEffect(() => {
     if (statsInView) {
@@ -84,6 +170,23 @@ const Home = () => {
 
   return (
     <div className="overflow-hidden">
+      <SEOHead
+        title="Insignyx Technologies | AI Implementation, Cloud Migration & Big Data Solutions India"
+        description="Leading AI implementation, cloud migration, and big data solutions company in India. Expert AWS & Azure consulting, machine learning, and enterprise digital transformation services. 500+ successful projects."
+        keywords="AI implementation India, cloud migration services, big data solutions, AWS consulting India, Azure migration, machine learning consulting, enterprise AI solutions, digital transformation India, cloud architecture, data analytics services"
+        canonicalUrl="https://insignyx.com/"
+        structuredData={structuredData}
+        breadcrumbs={breadcrumbs}
+        faqData={faqData}
+        hreflang={[
+          { lang: 'en-us', url: 'https://insignyx.com/' },
+          { lang: 'en-in', url: 'https://insignyx.com/' }
+        ]}
+      />
+      
+      {/* Breadcrumb */}
+      <Breadcrumb items={breadcrumbs} />
+      
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Video Background */}
@@ -289,6 +392,45 @@ const Home = () => {
               className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200 inline-flex items-center min-h-[48px] touch-manipulation"
             >
               View All Testimonials
+              <ArrowRight className="ml-2" size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600">
+              Get answers to common questions about our AI, cloud, and big data services.
+            </p>
+          </div>
+          
+          <div className="space-y-6">
+            {faqData.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors duration-200"
+              >
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">{faq.question}</h3>
+                <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Link
+              to="/contact"
+              className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200 inline-flex items-center"
+            >
+              Have More Questions?
               <ArrowRight className="ml-2" size={18} />
             </Link>
           </div>

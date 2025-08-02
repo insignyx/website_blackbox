@@ -3,10 +3,99 @@ import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
 import { Brain, Cloud, Database, ArrowRight, CheckCircle, Star, Zap, Shield, TrendingUp, Code, Server, BarChart3, Search, Target } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import SEOHead from '../components/SEOHead'
+import Breadcrumb from '../components/Breadcrumb'
 
 const Services = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [activeTab, setActiveTab] = useState('ai')
+
+  const breadcrumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Services', url: '/services' }
+  ]
+
+  const faqData = [
+    {
+      question: 'What AI technologies do you specialize in?',
+      answer: 'We specialize in machine learning, natural language processing, computer vision, predictive analytics, and deep learning using frameworks like TensorFlow, PyTorch, and cloud-based AI services from AWS and Azure.'
+    },
+    {
+      question: 'How do you ensure successful cloud migration?',
+      answer: 'We follow a comprehensive migration strategy including assessment, planning, pilot testing, phased migration, and post-migration optimization. Our certified cloud architects ensure zero downtime and optimal performance.'
+    },
+    {
+      question: 'What industries do your big data solutions serve?',
+      answer: 'We serve healthcare, finance, e-commerce, retail, manufacturing, and technology sectors with customized big data solutions including data warehousing, real-time analytics, and business intelligence.'
+    },
+    {
+      question: 'Do you provide ongoing support after project completion?',
+      answer: 'Yes, we offer comprehensive post-deployment support including 24/7 monitoring, maintenance, performance optimization, security updates, and technical assistance to ensure continued success.'
+    },
+    {
+      question: 'How long does a typical AI implementation project take?',
+      answer: 'Project timelines vary based on complexity, but typically range from 3-9 months for enterprise AI implementations. We provide detailed project timelines during our initial consultation and discovery phase.'
+    }
+  ]
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "provider": {
+      "@type": "Organization",
+      "name": "Insignyx Technologies",
+      "url": "https://insignyx.com"
+    },
+    "serviceType": "Technology Consulting",
+    "description": "Comprehensive AI implementation, cloud migration, and big data solutions for enterprise digital transformation.",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Technology Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI Implementation Services",
+            "description": "Machine learning, NLP, computer vision, and predictive analytics solutions",
+            "category": "Artificial Intelligence"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Cloud Migration Services",
+            "description": "AWS and Azure cloud migration, optimization, and managed services",
+            "category": "Cloud Computing"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Big Data Solutions",
+            "description": "Data warehousing, analytics, business intelligence, and data lake solutions",
+            "category": "Big Data Analytics"
+          }
+        }
+      ]
+    },
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "India"
+      },
+      {
+        "@type": "Country",
+        "name": "United States"
+      },
+      {
+        "@type": "Country",
+        "name": "United Kingdom"
+      }
+    ]
+  }
 
   const services = {
     ai: {
@@ -156,6 +245,23 @@ const Services = () => {
 
   return (
     <div className="pt-16">
+      <SEOHead
+        title="AI Implementation, Cloud Migration & Big Data Services | Insignyx Technologies"
+        description="Expert AI implementation, AWS/Azure cloud migration, and big data solutions. Machine learning, NLP, computer vision, data analytics, and enterprise digital transformation services."
+        keywords="AI implementation services, cloud migration AWS Azure, big data solutions, machine learning consulting, NLP services, computer vision, data analytics, digital transformation, enterprise AI solutions India"
+        canonicalUrl="https://insignyx.com/services"
+        structuredData={structuredData}
+        breadcrumbs={breadcrumbs}
+        faqData={faqData}
+        hreflang={[
+          { lang: 'en-us', url: 'https://insignyx.com/services' },
+          { lang: 'en-in', url: 'https://insignyx.com/services' }
+        ]}
+      />
+      
+      {/* Breadcrumb */}
+      <Breadcrumb items={breadcrumbs} />
+      
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-blue-900 to-cyan-900 overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />
@@ -419,6 +525,45 @@ const Services = () => {
                 </motion.div>
               )
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600">
+              Get answers to common questions about our AI, cloud, and big data services.
+            </p>
+          </div>
+          
+          <div className="space-y-6">
+            {faqData.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200"
+              >
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">{faq.question}</h3>
+                <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Link
+              to="/contact"
+              className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200 inline-flex items-center"
+            >
+              Have More Questions?
+              <ArrowRight className="ml-2" size={18} />
+            </Link>
           </div>
         </div>
       </section>

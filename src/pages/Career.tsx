@@ -3,6 +3,7 @@ import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
 import { MapPin, Clock, DollarSign, Users, Heart, Coffee, Zap, Award, ChevronRight, Search, Filter, Briefcase, GraduationCap, Star } from 'lucide-react'
 import { toast } from 'sonner'
+import SEOHead from '../components/SEOHead'
 
 const Career = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
@@ -10,6 +11,48 @@ const Career = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedDepartment, setSelectedDepartment] = useState('all')
   const [selectedLocation, setSelectedLocation] = useState('all')
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Insignyx Technologies",
+      "sameAs": "https://insignyx.com",
+      "logo": "https://insignyx.com/logo.png"
+    },
+    "jobLocation": [
+      {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "San Francisco",
+          "addressRegion": "CA",
+          "addressCountry": "US"
+        }
+      },
+      {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "New York",
+          "addressRegion": "NY",
+          "addressCountry": "US"
+        }
+      },
+      {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "US"
+        }
+      }
+    ],
+    "employmentType": "FULL_TIME",
+    "industry": "Technology",
+    "description": "Join Insignyx Technologies and work on cutting-edge AI, cloud, and big data solutions. We offer competitive salaries, comprehensive benefits, and opportunities for professional growth.",
+    "benefits": "Health insurance, dental, vision, 401k matching, flexible work arrangements, professional development, equity options"
+  }
 
   const jobOpenings = [
     {
@@ -210,6 +253,17 @@ const Career = () => {
 
   return (
     <div className="pt-16">
+      <SEOHead
+        title="Careers at Insignyx Technologies | AI, Cloud & Data Science Jobs"
+        description="Join our team of technology experts! Explore career opportunities in AI engineering, cloud architecture, data science, and more. Competitive salaries, great benefits, and innovative projects."
+        keywords="careers Insignyx Technologies, AI engineer jobs, cloud architect jobs, data scientist careers, technology jobs, software engineer positions, remote tech jobs, IT careers India US"
+        canonicalUrl="https://insignyx.com/career"
+        structuredData={structuredData}
+        hreflang={[
+          { lang: 'en-us', url: 'https://insignyx.com/career' },
+          { lang: 'en-in', url: 'https://insignyx.com/career' }
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-purple-900 to-blue-900 overflow-hidden">
         <div className="absolute inset-0 z-0">

@@ -1,10 +1,45 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Users, Target, Eye, Award, Lightbulb, Shield, Zap, Globe } from 'lucide-react'
+import SEOHead from '../components/SEOHead'
 
 const About = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [teamRef, teamInView] = useInView({ threshold: 0.1, triggerOnce: true })
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Insignyx Technologies",
+      "url": "https://insignyx.com",
+      "foundingDate": "2016",
+      "description": "Leading technology consulting firm specializing in AI implementation, cloud migration, and big data solutions with 8+ years of excellence and 500+ successful projects.",
+      "numberOfEmployees": "50-100",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN",
+        "addressRegion": "Delhi",
+        "addressLocality": "New Delhi"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Alex Thompson",
+        "jobTitle": "CEO & Founder"
+      },
+      "award": "Industry Leader in Technology Consulting 2024",
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Machine Learning",
+        "Cloud Computing",
+        "Big Data Analytics",
+        "Digital Transformation",
+        "AWS",
+        "Azure"
+      ]
+    }
+  }
 
   const timeline = [
     {
@@ -111,6 +146,17 @@ const About = () => {
 
   return (
     <div className="pt-16">
+      <SEOHead
+        title="About Insignyx Technologies | Leading AI & Cloud Consulting Company India"
+        description="Learn about Insignyx Technologies - 8+ years of excellence in AI implementation, cloud migration, and big data solutions. 500+ successful projects, 150+ happy clients, 98% satisfaction rate."
+        keywords="about Insignyx Technologies, AI consulting company India, cloud migration experts, big data solutions company, technology consulting firm, digital transformation services, AWS Azure partners India"
+        canonicalUrl="https://insignyx.com/about"
+        structuredData={structuredData}
+        hreflang={[
+          { lang: 'en-us', url: 'https://insignyx.com/about' },
+          { lang: 'en-in', url: 'https://insignyx.com/about' }
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative py-16 sm:py-20 bg-gradient-to-r from-blue-900 to-cyan-900 overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />

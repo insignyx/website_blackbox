@@ -2,12 +2,64 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
 import { Search, Calendar, User, Clock, ArrowRight, Tag, TrendingUp, BookOpen, Share2, Heart, MessageCircle, Eye } from 'lucide-react'
+import SEOHead from '../components/SEOHead'
 
 const Blog = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [selectedTag, setSelectedTag] = useState('all')
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Insignyx Technologies Blog",
+    "description": "Expert insights on AI implementation, cloud migration, big data analytics, and digital transformation trends.",
+    "url": "https://insignyx.com/blog",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Insignyx Technologies",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://insignyx.com/logo.png"
+      }
+    },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "The Future of AI in Enterprise: Trends and Predictions for 2024",
+        "description": "Explore the latest trends in artificial intelligence and how they will reshape enterprise operations in the coming year.",
+        "author": {
+          "@type": "Person",
+          "name": "Dr. Sarah Chen"
+        },
+        "datePublished": "2024-01-15",
+        "url": "https://insignyx.com/blog/future-ai-enterprise-2024"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Cloud Migration Best Practices: A Complete Guide for CTOs",
+        "description": "Learn the essential strategies and best practices for successful cloud migration projects.",
+        "author": {
+          "@type": "Person",
+          "name": "Michael Rodriguez"
+        },
+        "datePublished": "2024-01-12",
+        "url": "https://insignyx.com/blog/cloud-migration-best-practices"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Big Data Analytics: Turning Information into Actionable Insights",
+        "description": "Discover how modern big data analytics can transform raw data into valuable business intelligence.",
+        "author": {
+          "@type": "Person",
+          "name": "Emily Watson"
+        },
+        "datePublished": "2024-01-10",
+        "url": "https://insignyx.com/blog/big-data-analytics-insights"
+      }
+    ]
+  }
 
   const blogPosts = [
     {
@@ -155,6 +207,17 @@ const Blog = () => {
 
   return (
     <div className="pt-16">
+      <SEOHead
+        title="Tech Blog | AI, Cloud Migration & Big Data Insights | Insignyx Technologies"
+        description="Expert insights on AI implementation, cloud migration, big data analytics, DevOps, and digital transformation. Stay updated with latest technology trends and best practices."
+        keywords="technology blog, AI insights, cloud migration guide, big data analytics, DevOps automation, cybersecurity trends, digital transformation, enterprise technology, tech industry news"
+        canonicalUrl="https://insignyx.com/blog"
+        structuredData={structuredData}
+        hreflang={[
+          { lang: 'en-us', url: 'https://insignyx.com/blog' },
+          { lang: 'en-in', url: 'https://insignyx.com/blog' }
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-indigo-900 to-blue-900 overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />

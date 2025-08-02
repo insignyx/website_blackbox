@@ -2,11 +2,78 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
 import { Star, Quote, ChevronLeft, ChevronRight, Award, TrendingUp, Users, Building, ArrowRight } from 'lucide-react'
+import SEOHead from '../components/SEOHead'
 
 const Testimonials = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [selectedCategory, setSelectedCategory] = useState('all')
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Insignyx Technologies",
+    "url": "https://insignyx.com",
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Michael Chen"
+        },
+        "reviewBody": "Insignyx Technologies transformed our business with their AI implementation. The machine learning models they developed increased our operational efficiency by 40% and reduced costs significantly.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "TechFlow Solutions"
+        }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Sarah Williams"
+        },
+        "reviewBody": "The cloud migration project with Insignyx was seamless and exceeded our expectations. They migrated our entire infrastructure to AWS with zero downtime and improved our system performance by 300%.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "CloudFirst Inc."
+        }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "David Rodriguez"
+        },
+        "reviewBody": "Insignyx helped us build a robust big data platform that processes terabytes of data daily. Their solution enabled real-time analytics and gave us insights we never had before.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Analytics Pro"
+        }
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "150",
+      "bestRating": "5"
+    }
+  }
   const clientLogos = [
     {
       id: 1,
@@ -259,6 +326,18 @@ const Testimonials = () => {
 
   return (
     <div className="pt-16">
+      <SEOHead
+        title="Client Testimonials & Success Stories | Insignyx Technologies"
+        description="Read authentic client testimonials and success stories from businesses transformed by Insignyx Technologies' AI implementation, cloud migration, and big data solutions."
+        keywords="client testimonials, success stories, AI implementation reviews, cloud migration testimonials, big data solutions feedback, customer reviews Insignyx, technology transformation stories"
+        canonicalUrl="https://insignyx.com/testimonials"
+        structuredData={structuredData}
+        hreflang={[
+          { lang: 'en-US', url: 'https://insignyx.com/testimonials' },
+          { lang: 'en-IN', url: 'https://insignyx.com/in/testimonials' },
+          { lang: 'en-GB', url: 'https://insignyx.com/uk/testimonials' }
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative py-16 sm:py-20 bg-gradient-to-r from-blue-900 to-purple-900 overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />

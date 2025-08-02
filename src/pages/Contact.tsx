@@ -3,10 +3,49 @@ import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, ArrowRight, Building, User, MessageSquare } from 'lucide-react'
 import { toast } from 'sonner'
+import SEOHead from '../components/SEOHead'
 
 const Contact = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [currentStep, setCurrentStep] = useState(1)
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Insignyx Technologies",
+      "url": "https://insignyx.com",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-9520531149",
+          "contactType": "customer service",
+          "areaServed": "IN",
+          "availableLanguage": "English"
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+1-908-315-2604",
+          "contactType": "customer service",
+          "areaServed": "US",
+          "availableLanguage": "English"
+        }
+      ],
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Dr. Vikram Sarabhai Road, Genda Cir, Vadiwadi",
+          "addressLocality": "Vadodara",
+          "addressRegion": "Gujarat",
+          "postalCode": "390007",
+          "addressCountry": "IN"
+        }
+      ],
+      "email": "connect@insignyx.com",
+      "openingHours": "Mo-Fr 09:00-18:00, Sa 10:00-16:00"
+    }
+  }
   const [formData, setFormData] = useState({
     // Step 1: Basic Info
     name: '',
@@ -309,6 +348,17 @@ const Contact = () => {
 
   return (
     <div className="pt-16">
+      <SEOHead
+        title="Contact Insignyx Technologies | AI & Cloud Consulting Services India"
+        description="Get in touch with Insignyx Technologies for AI implementation, cloud migration, and big data solutions. Contact us at +91-9520531149 or connect@insignyx.com. Offices in Vadodara, India."
+        keywords="contact Insignyx Technologies, AI consulting contact, cloud migration services contact, big data solutions inquiry, technology consulting India, Vadodara IT company contact"
+        canonicalUrl="https://insignyx.com/contact"
+        structuredData={structuredData}
+        hreflang={[
+          { lang: 'en-us', url: 'https://insignyx.com/contact' },
+          { lang: 'en-in', url: 'https://insignyx.com/contact' }
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-blue-900 to-cyan-900 overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />

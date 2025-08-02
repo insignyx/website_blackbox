@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Homepage -->
+  <url>
+    <loc>https://insignyx.com/</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://insignyx.com/" />
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://insignyx.com/" />
+  </url>
+  
+  <!-- Main Pages -->
+  <url>
+    <loc>https://insignyx.com/about</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/services</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/contact</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/blog</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/career</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/testimonials</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Service Pages -->
+  <url>
+    <loc>https://insignyx.com/services/aws-cloud-migration</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://insignyx.com/services/aws-cloud-migration" />
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://insignyx.com/services/aws-cloud-migration" />
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/services/azure-cloud-migration</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://insignyx.com/services/azure-cloud-migration" />
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://insignyx.com/services/azure-cloud-migration" />
+  </url>
+  
+  <!-- Industry Pages -->
+  <url>
+    <loc>https://insignyx.com/industries/ai-for-healthcare</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://insignyx.com/industries/ai-for-healthcare" />
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://insignyx.com/industries/ai-for-healthcare" />
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/industries/ai-for-finance</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://insignyx.com/industries/ai-for-finance" />
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://insignyx.com/industries/ai-for-finance" />
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/industries/ai-for-ecommerce</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://insignyx.com/industries/ai-for-ecommerce" />
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://insignyx.com/industries/ai-for-ecommerce" />
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/industries/ai-for-retail</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://insignyx.com/industries/ai-for-retail" />
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://insignyx.com/industries/ai-for-retail" />
+  </url>
+  
+  <!-- Alternative Industry Routes for SEO */}
+  <url>
+    <loc>https://insignyx.com/ai-healthcare</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://insignyx.com/ai-healthcare" />
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://insignyx.com/ai-healthcare" />
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/ai-finance</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://insignyx.com/ai-finance" />
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://insignyx.com/ai-finance" />
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/ai-ecommerce</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://insignyx.com/ai-ecommerce" />
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://insignyx.com/ai-ecommerce" />
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/ai-retail</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://insignyx.com/ai-retail" />
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://insignyx.com/ai-retail" />
+  </url>
+  
+  <!-- Blog Posts (Sample) -->
+  <url>
+    <loc>https://insignyx.com/blog/ai-trends-2025</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/blog/cloud-migration-best-practices</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://insignyx.com/blog/big-data-analytics-guide</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
