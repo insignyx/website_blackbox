@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, ArrowRight, Building, User, MessageSquare } from 'lucide-react'
 import { toast } from 'sonner'
 import emailjs from '@emailjs/browser'
-import emailjsConfig from '../config/emailjs'
+import { emailjsConfig } from '../config/emailjs'
 import SEOHead from '../components/SEOHead'
 
 const Contact = () => {

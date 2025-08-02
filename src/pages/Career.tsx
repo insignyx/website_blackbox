@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { MapPin, Clock, DollarSign, Users, Heart, Coffee, Zap, Award, ChevronRight, Search, Filter, Briefcase, GraduationCap, Star } from 'lucide-react'
 import { toast } from 'sonner'
 import SEOHead from '../components/SEOHead'
-import { JobApplicationModal } from '../components/JobApplicationModal'
+import JobApplicationModal from '../components/JobApplicationModal'
 
 const Career = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
