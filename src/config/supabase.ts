@@ -12,11 +12,29 @@ console.log('VITE_SUPABASE_URL:', supabaseUrl)
 console.log('VITE_SUPABASE_ANON_KEY:', supabaseAnonKey ? `${supabaseAnonKey.substring(0, 20)}...` : 'undefined')
 console.log('All env vars:', import.meta.env)
 
+// More detailed debugging
+console.log('🔍 Detailed checks:')
+console.log('supabaseUrl exists:', !!supabaseUrl)
+console.log('supabaseUrl type:', typeof supabaseUrl)
+console.log('supabaseUrl value:', supabaseUrl)
+console.log('supabaseAnonKey exists:', !!supabaseAnonKey)
+console.log('supabaseAnonKey type:', typeof supabaseAnonKey)
+console.log('supabaseAnonKey not placeholder:', supabaseAnonKey !== 'YOUR_SUPABASE_ANON_KEY')
+console.log('supabaseUrl not placeholder:', supabaseUrl !== 'YOUR_SUPABASE_URL')
+
 // Check if Supabase is configured
 const isSupabaseConfigured = supabaseUrl && supabaseAnonKey && 
   supabaseUrl !== 'YOUR_SUPABASE_URL' && supabaseAnonKey !== 'YOUR_SUPABASE_ANON_KEY'
 
 console.log('✅ Supabase configured:', isSupabaseConfigured)
+
+// Alert if not configured (for debugging)
+if (!isSupabaseConfigured) {
+  console.error('❌ SUPABASE NOT CONFIGURED!')
+  console.error('URL check:', supabaseUrl, supabaseUrl !== 'YOUR_SUPABASE_URL')
+  console.error('Key check:', !!supabaseAnonKey, supabaseAnonKey !== 'YOUR_SUPABASE_ANON_KEY')
+  alert('Supabase configuration error - check console for details')
+}
 
 // Create Supabase client only if configured
 export const supabase = isSupabaseConfigured 
