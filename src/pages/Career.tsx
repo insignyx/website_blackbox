@@ -4,9 +4,17 @@ import { useState } from 'react'
 import { MapPin, Clock, DollarSign, Users, Heart, Coffee, Zap, Award, ChevronRight, Search, Filter, Briefcase, GraduationCap, Star } from 'lucide-react'
 import { toast } from 'sonner'
 import SEOHead from '../components/SEOHead'
+import { JobApplicationModal } from '../components/JobApplicationModal'
 
 const Career = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
+  const [selectedJobForModal, setSelectedJobForModal] = useState<{
+    id: number
+    title: string
+    department: string
+    location: string
+  } | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedJob, setSelectedJob] = useState<number | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedDepartment, setSelectedDepartment] = useState('all')
@@ -61,7 +69,6 @@ const Career = () => {
       department: 'Engineering',
       location: 'San Francisco, CA',
       type: 'Full-time',
-      salary: '$150,000 - $200,000',
       experience: '5+ years',
       description: 'Lead the development of cutting-edge AI solutions and machine learning models.',
       requirements: [
@@ -84,7 +91,6 @@ const Career = () => {
       department: 'Engineering',
       location: 'New York, NY',
       type: 'Full-time',
-      salary: '$140,000 - $180,000',
       experience: '4+ years',
       description: 'Design and implement scalable cloud infrastructure solutions for enterprise clients.',
       requirements: [
@@ -107,7 +113,6 @@ const Career = () => {
       department: 'Data & Analytics',
       location: 'Austin, TX',
       type: 'Full-time',
-      salary: '$120,000 - $160,000',
       experience: '3+ years',
       description: 'Analyze complex datasets to derive actionable insights for business decision-making.',
       requirements: [
@@ -130,7 +135,6 @@ const Career = () => {
       department: 'Design',
       location: 'Remote',
       type: 'Full-time',
-      salary: '$90,000 - $130,000',
       experience: '3+ years',
       description: 'Create intuitive and engaging user experiences for our digital products.',
       requirements: [
@@ -153,7 +157,6 @@ const Career = () => {
       department: 'Engineering',
       location: 'San Francisco, CA',
       type: 'Full-time',
-      salary: '$130,000 - $170,000',
       experience: '4+ years',
       description: 'Build and maintain CI/CD pipelines and infrastructure automation.',
       requirements: [
@@ -176,7 +179,6 @@ const Career = () => {
       department: 'Product',
       location: 'New York, NY',
       type: 'Full-time',
-      salary: '$110,000 - $150,000',
       experience: '4+ years',
       description: 'Drive product strategy and roadmap for our technology solutions.',
       requirements: [
@@ -247,8 +249,21 @@ const Career = () => {
   })
 
   const handleApply = (jobId: number) => {
-    toast.success('Application submitted successfully! We\'ll be in touch soon.')
-    console.log(`Applied for job ${jobId}`)
+    const job = jobOpenings.find(j => j.id === jobId)
+    if (job) {
+      setSelectedJobForModal({
+        id: job.id,
+        title: job.title,
+        department: job.department,
+        location: job.location
+      })
+      setIsModalOpen(true)
+    }
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSelectedJobForModal(null)
   }
 
   return (
@@ -410,7 +425,6 @@ const Career = () => {
                   
                   <div className="flex justify-between items-center">
                     <div className="flex gap-4 text-sm">
-                      <span className="text-green-600 font-medium">{job.salary}</span>
                       <span className="text-gray-500">{job.experience}</span>
                     </div>
                     <button
@@ -642,6 +656,18 @@ const Career = () => {
           </motion.div>
         </div>
       </section>
+      
+      {/* Job Application Modal */}
+      {selectedJobForModal && (
+        <JobApplicationModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          jobTitle={selectedJobForModal.title}
+          jobId={selectedJobForModal.id}
+          department={selectedJobForModal.department}
+          location={selectedJobForModal.location}
+        />
+      )}
     </div>
   )
 }
