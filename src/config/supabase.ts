@@ -1,45 +1,26 @@
 import { createClient } from '@supabase/supabase-js'
 
 // Supabase Configuration
-// These values are loaded from environment variables
-// Create a .env file in your project root and add your actual Supabase credentials
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string
 
-// Debug: Log environment variables (remove in production)
-console.log('🔍 Supabase Environment Variables:')
-console.log('VITE_SUPABASE_URL:', supabaseUrl)
-console.log('VITE_SUPABASE_ANON_KEY:', supabaseAnonKey ? `${supabaseAnonKey.substring(0, 20)}...` : 'undefined')
-console.log('All env vars:', import.meta.env)
-
-// More detailed debugging
-console.log('🔍 Detailed checks:')
-console.log('supabaseUrl exists:', !!supabaseUrl)
-console.log('supabaseUrl type:', typeof supabaseUrl)
-console.log('supabaseUrl value:', supabaseUrl)
-console.log('supabaseAnonKey exists:', !!supabaseAnonKey)
-console.log('supabaseAnonKey type:', typeof supabaseAnonKey)
-console.log('supabaseAnonKey not placeholder:', supabaseAnonKey !== 'YOUR_SUPABASE_ANON_KEY')
-console.log('supabaseUrl not placeholder:', supabaseUrl !== 'YOUR_SUPABASE_URL')
-
-// Check if Supabase is configured
-const isSupabaseConfigured = supabaseUrl && supabaseAnonKey && 
-  supabaseUrl !== 'YOUR_SUPABASE_URL' && supabaseAnonKey !== 'YOUR_SUPABASE_ANON_KEY'
-
-console.log('✅ Supabase configured:', isSupabaseConfigured)
-
-// Alert if not configured (for debugging)
-if (!isSupabaseConfigured) {
-  console.error('❌ SUPABASE NOT CONFIGURED!')
-  console.error('URL check:', supabaseUrl, supabaseUrl !== 'YOUR_SUPABASE_URL')
-  console.error('Key check:', !!supabaseAnonKey, supabaseAnonKey !== 'YOUR_SUPABASE_ANON_KEY')
-  alert('Supabase configuration error - check console for details')
+// Validate configuration
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error('❌ Supabase environment variables are missing!')
+  console.error('VITE_SUPABASE_URL:', supabaseUrl ? 'Present' : 'Missing')
+  console.error('VITE_SUPABASE_ANON_KEY:', supabaseAnonKey ? 'Present' : 'Missing')
+  throw new Error('Supabase configuration is incomplete. Please check your .env file.')
 }
 
-// Create Supabase client only if configured
-export const supabase = isSupabaseConfigured 
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : null
+if (supabaseUrl === 'YOUR_SUPABASE_URL' || supabaseAnonKey === 'YOUR_SUPABASE_ANON_KEY') {
+  console.error('❌ Supabase environment variables contain placeholder values!')
+  throw new Error('Please replace placeholder values in your .env file with actual Supabase credentials.')
+}
+
+// Create Supabase client
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
+console.log('✅ Supabase client initialized successfully')
 
 // Database Configuration
 export const DATABASE_CONFIG = {
@@ -132,9 +113,6 @@ export const validateFile = (file: File): FileValidationResult => {
  * Upload resume file to Supabase Storage
  */
 export const uploadResume = async (file: File, candidateId: string): Promise<ResumeUploadResult> => {
-  if (!supabase) {
-    throw new Error('Supabase is not configured. Please check your configuration in src/config/supabase.ts')
-  }
   
   try {
     // Validate file first
@@ -180,9 +158,6 @@ export const uploadResume = async (file: File, candidateId: string): Promise<Res
  * Save job application to database
  */
 export const saveJobApplication = async (applicationData: JobApplication): Promise<void> => {
-  if (!supabase) {
-    throw new Error('Supabase is not configured. Please check your configuration in src/config/supabase.ts')
-  }
   
   try {
     const { error } = await supabase
